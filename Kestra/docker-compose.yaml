@@ -1,0 +1,44 @@
+#Code to set up kestra with docker
+
+services:
+  kestra:
+    image: kestra/kestra:latest
+    pull_policy: always
+    user: "root"
+    command: server standalone
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/kestra-wd:/tmp/kestra-wd
+
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: jdbc:postgresql://kestradb.cwd0si0y42g2.us-east-1.rds.amazonaws.com:5432/kestra
+            driverClassName: org.postgresql.Driver
+            username: postgres
+            password: kestrapw
+        kestra:
+          server:
+            basicAuth:
+              enabled: true
+              username: "lanaayodeji20@gmail.com"
+              password: kestrapw
+          repository:
+            type: postgres
+          storage:
+              type: s3
+              s3:
+                accessKey: "****"
+                secretKey: "****"
+                region: "****"
+                bucket: "****"
+          queue:
+            type: postgres
+          tasks:
+            tmpDir:
+              path: /tmp/kestra-wd/tmp
+          url: http://localhost:8080/
+    ports:
+      - "8080:8080"
+      - "8081:8081"
