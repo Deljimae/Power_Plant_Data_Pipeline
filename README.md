@@ -106,6 +106,8 @@ Yearly commissioning trends
 
 Fuel type by year breakdown
 
+Key transformations made includes filtering out NULL values in important columns like "commission_year", and "primary_fuel". I also performed aggregation and groupings as your in the provided sql files.
+
 This approach ensures fast turnaround while still maintaining clarity, auditability, and performance for analytics.
 
 ### 📊 Data Visualization
