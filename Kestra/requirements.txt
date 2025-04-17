@@ -1,0 +1,8 @@
+```kestra-plugin-aws-s3 (for S3 interactions)```
+
+```kestra-plugin-aws-athena (for Athena interactions)```
+
+```docker```
+
+```AWS EC2 Server```
+
